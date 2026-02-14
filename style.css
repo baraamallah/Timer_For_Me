@@ -2,10 +2,10 @@
 
 :root {
     --bg-color: #0d0d12;
-    --accent-color: #e63946;
+    --accent-color: #2d6a4f; /* Dark Green */
     --text-color: #f1faee;
     --secondary-bg: rgba(255, 255, 255, 0.05);
-    --glow-color: rgba(230, 57, 70, 0.5);
+    --glow-color: rgba(45, 106, 79, 0.6); /* Green Glow */
     --primary-btn: #1d3557;
     --primary-btn-hover: #457b9d;
 }
