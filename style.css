@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #0d0d12;
+    --accent-color: #e63946;
+    --text-color: #f1faee;
+    --secondary-bg: rgba(255, 255, 255, 0.05);
+    --glow-color: rgba(230, 57, 70, 0.5);
+    --primary-btn: #1d3557;
+    --primary-btn-hover: #457b9d;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    direction: rtl;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    background: var(--secondary-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px var(--glow-color);
+    letter-spacing: 1px;
+}
+
+.timer-display {
+    font-size: 6rem;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+    margin: 20px 0;
+    color: var(--accent-color);
+    text-shadow: 0 0 20px var(--glow-color);
+    transition: all 0.3s ease;
+}
+
+.timer-display.low-time {
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); text-shadow: 0 0 20px var(--glow-color); }
+    to { transform: scale(1.05); text-shadow: 0 0 40px var(--glow-color); }
+}
+
+.controls {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background-color: var(--primary-btn);
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: var(--primary-btn-hover);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#start-btn { background-color: #2a9d8f; }
+#start-btn:hover { background-color: #264653; }
+
+#pause-btn { background-color: #f4a261; }
+#pause-btn:hover { background-color: #e76f51; }
+
+#reset-btn { background-color: #e63946; }
+
+.time-settings {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.setting-group {
+    display: inline-block;
+    margin: 10px;
+}
+
+input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.presets {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.presets button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.presets button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container {
+    max-width: 150px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.logo-container:hover {
+    opacity: 1;
+}
+
+.logo-container img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+}
+
+/* Animations for when time is up */
+.times-up {
+    animation: shake 0.5s ease-in-out infinite alternate, flashRed 0.5s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes flashRed {
+    0% { background-color: var(--bg-color); }
+    50% { background-color: #500; }
+    100% { background-color: var(--bg-color); }
+}
