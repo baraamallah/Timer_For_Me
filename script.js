@@ -11,6 +11,8 @@ const minutesInput = document.getElementById('minutes-input');
 const secondsInput = document.getElementById('seconds-input');
 const alarmSound = document.getElementById('alarm-sound');
 const container = document.querySelector('.container');
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+const exitFullscreenBtn = document.getElementById('exit-fullscreen-btn');
 
 function updateDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -98,6 +100,27 @@ function playBeep() {
     }, 1000);
 }
 
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+        });
+        document.body.classList.add('fullscreen-mode');
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        document.body.classList.remove('fullscreen-mode');
+    }
+}
+
+// Listen for fullscreen change events (e.g., if user presses Esc)
+document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+        document.body.classList.remove('fullscreen-mode');
+    }
+});
+
 function timeUp() {
     display.textContent = "00:00";
     container.classList.add('times-up');
@@ -117,6 +140,8 @@ startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
 setTimeBtn.addEventListener('click', setTime);
+fullscreenBtn.addEventListener('click', toggleFullscreen);
+exitFullscreenBtn.addEventListener('click', toggleFullscreen);
 
 // Initialize
 timeLeft = 30 * 60; // Default 30 minutes

@@ -42,6 +42,32 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
+.header-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -30px;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 8px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
 header h1 {
     font-size: 2.5rem;
     margin-bottom: 30px;
@@ -166,6 +192,63 @@ input[type="number"] {
     width: 100%;
     height: auto;
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+}
+
+/* Fullscreen Styles */
+body.fullscreen-mode {
+    background-color: #000;
+}
+
+body.fullscreen-mode .container {
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    border: none;
+    border-radius: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+body.fullscreen-mode header h1,
+body.fullscreen-mode .time-settings,
+body.fullscreen-mode .presets,
+body.fullscreen-mode #reset-btn,
+body.fullscreen-mode .header-top {
+    display: none !important;
+}
+
+body.fullscreen-mode .timer-display {
+    font-size: 15rem;
+}
+
+body.fullscreen-mode .logo-container {
+    max-width: 300px;
+    order: -1; /* Move logo to top in full screen if preferred */
+}
+
+body.fullscreen-mode .footer {
+    margin-top: 0;
+}
+
+.exit-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+}
+
+body.fullscreen-mode .exit-btn {
+    display: block;
 }
 
 /* Animations for when time is up */
